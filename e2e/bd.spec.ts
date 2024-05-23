@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 test("Business Desk", async ({ page }) => {
+  test.slow();
   await page.goto("https://businessdesk.co.nz/");
   await page.locator("h1.card-title").first().click();
 
@@ -12,4 +13,6 @@ test("Business Desk", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "bd.txt");
   fs.writeFileSync(filePath, headline);
+
+  page.close;
 });

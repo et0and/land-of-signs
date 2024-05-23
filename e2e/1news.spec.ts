@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 test("1News", async ({ page }) => {
+  test.slow();
   await page.goto("https://www.1news.co.nz/");
   await page
     .locator(
@@ -19,4 +20,5 @@ test("1News", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "1news.txt");
   fs.writeFileSync(filePath, headline);
+  page.close;
 });
