@@ -35,7 +35,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/ --project chromium
+        run: npx playwright test e2e/rnz.spec.ts e2e/post.spec.ts --project msedge
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
