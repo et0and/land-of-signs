@@ -19,12 +19,31 @@ jobs:
           node-version: 18
 
       - run: npm ci
-      - run: npm install playwright
-      - run: npx playwright install
+
+      - name: Cache Playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
       - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
         run: npx playwright test e2e/
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: data
+          path: |
+            data/
 
       - name: Commit and push if it changed
         run: |
