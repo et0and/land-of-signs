@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 test("The Post", async ({ page }) => {
+  test.slow();
   await page.goto("https://www.thepost.co.nz/");
   await page.locator(".page-container").first().click();
 
