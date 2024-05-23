@@ -39,15 +39,10 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test e2e/
 
-      - name: Create data folder
-        run: mkdir -p data
-
-      - name: Copy test files to data folder
-        run: cp test*.txt data/
-
       - name: Upload test results
         uses: actions/upload-artifact@v3
         if: always()
         with:
           name: data
-          path: data/
+          path: |
+            data/
