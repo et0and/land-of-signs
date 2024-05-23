@@ -3,7 +3,7 @@ name: Fetch headlines
 on:
   push:
   schedule:
-    - cron: "0 * * * *" # Runs every hour at minute 0
+    - cron: "2 * * * *" # Runs every hour at minute 0
 
 jobs:
   run-tests:
@@ -47,7 +47,6 @@ jobs:
 
       - name: Commit and push if it changed
         run: |
-          git diff
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add data/1news.txt
