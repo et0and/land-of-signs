@@ -1,6 +1,7 @@
 name: Fetch headlines
 
 on:
+  push:
   schedule:
     - cron: "0 * * * *" # Runs every hour at minute 0
 
