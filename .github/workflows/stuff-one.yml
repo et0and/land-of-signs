@@ -35,7 +35,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/news.spec.ts --project firefox
+        run: npx playwright test e2e/1news.spec.ts --project firefox
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
