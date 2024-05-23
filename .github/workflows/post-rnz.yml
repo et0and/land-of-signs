@@ -50,6 +50,6 @@ jobs:
           git diff
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add data/rnz.txt data/nzh.txt data/thepost.txt data/bd.txt data/1news.txt
+          git add data/rnz.txt data/thepost.txt
           git commit -am "Update headlines" -a || echo "No changes to commit"
           git push
