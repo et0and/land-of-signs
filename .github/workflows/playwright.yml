@@ -18,23 +18,28 @@ jobs:
         with:
           node-version: 18
 
+      - run: npm ci
+
       - name: Get installed Playwright version
         id: playwright-version
-        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+        run: echo "version=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')" >> $GITHUB_OUTPUT
 
-      - name: Cache Playwright binaries
+      - name: Cache Playwright
         uses: actions/cache@v3
         id: playwright-cache
         with:
-          path: |
-            ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
 
-      - run: npm ci
-      - run: npx playwright install --with-deps
+      - name: Install Playwright and dependencies
+        run: npx playwright install --with-deps chromium
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-      - run: npx playwright install-deps
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Install only Playwright dependencies
+        run: npx playwright install-deps chromium
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
 
       - name: Run Playwright tests
         run: npx playwright test e2e/nzh.spec.ts e2e/rnz.spec.ts e2e/post.spec.ts
