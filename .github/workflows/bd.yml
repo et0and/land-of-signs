@@ -35,13 +35,12 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/nzh.spec.ts e2e/bd.spec.ts --project firefox
+        run: npx playwright test e2e/bd.spec.ts --project firefox
 
       - name: Commit and push if it changed
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git pull
-          git add data/nzh.txt data/bd.txt
-          git commit -am "Update headlines" -a || echo "No changes to commit"
+          git add data/bd.txt
+          git commit -m "Update headlines" -a || echo "No changes to commit"
           git push
