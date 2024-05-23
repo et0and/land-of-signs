@@ -5,6 +5,7 @@ import path from "path";
 test("1News", async ({ page }) => {
   test.slow();
   await page.goto("https://www.1news.co.nz/");
+  await page.waitForTimeout(3000);
   await page
     .locator(
       ".default__StyledMainStory-sc-zw9hsb-0 > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"

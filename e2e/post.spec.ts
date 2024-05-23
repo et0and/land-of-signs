@@ -5,6 +5,7 @@ import path from "path";
 test("The Post", async ({ page }) => {
   test.slow();
   await page.goto("https://www.thepost.co.nz/");
+  await page.waitForTimeout(3000);
   await page.locator(".page-container").first().click();
 
   // Extract the text content of the h1 element
