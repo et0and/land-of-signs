@@ -6,15 +6,17 @@ const inter = Inter({ subsets: ["latin"] });
 interface HomeProps {
   nzhHeadline: string;
   rnzHeadline: string;
-  stuffHeadline: string;
+  bdHeadline: string;
   thepostHeadline: string;
+  newsHeadline: string;
 }
 
 const Home = ({
   nzhHeadline,
   rnzHeadline,
-  stuffHeadline,
+  bdHeadline,
   thepostHeadline,
+  newsHeadline,
 }: HomeProps) => {
   return (
     <>
@@ -74,7 +76,10 @@ const Home = ({
           &quot;{rnzHeadline}&quot;
         </h1>
         <h1 className="text-5xl md:text-8xl font-extrabold">
-          &quot;{stuffHeadline}&quot;
+          &quot;{bdHeadline}&quot;
+        </h1>
+        <h1 className="text-5xl md:text-8xl font-extrabold">
+          &quot;{newsHeadline}&quot;
         </h1>
         <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{thepostHeadline}&quot;
@@ -100,8 +105,13 @@ export const getStaticProps = async () => {
     "utf-8"
   );
 
-  const stuffHeadline = fs.readFileSync(
-    path.join(process.cwd(), "data", "stuff.txt"),
+  const bdHeadline = fs.readFileSync(
+    path.join(process.cwd(), "data", "bd.txt"),
+    "utf-8"
+  );
+
+  const newsHeadline = fs.readFileSync(
+    path.join(process.cwd(), "data", "1news.txt"),
     "utf-8"
   );
 
@@ -114,7 +124,8 @@ export const getStaticProps = async () => {
     props: {
       nzhHeadline,
       rnzHeadline,
-      stuffHeadline,
+      bdHeadline,
+      newsHeadline,
       thepostHeadline,
     },
   };

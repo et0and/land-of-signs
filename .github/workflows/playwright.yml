@@ -39,7 +39,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/nzh.spec.ts e2e/rnz.spec.ts e2e/post.spec.ts e2e/stuff.spec.ts
+        run: npx playwright test e2e/
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
