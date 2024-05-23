@@ -1,9 +1,9 @@
-name: Fetch headlines
+name: Fetch Post
 
 on:
   push:
   schedule:
-    - cron: "0 * * * *" # Runs every hour at minute 0
+    - cron: "1 * * * *" # Runs every hour at minute 0
 
 jobs:
   run-tests:
@@ -35,15 +35,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/rnz.spec.ts e2e/post.spec.ts --project firefox
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: data
-          path: |
-            data/
+        run: npx playwright test e2e/post.spec.ts --project firefox
 
       - name: Commit and push if it changed
         run: |

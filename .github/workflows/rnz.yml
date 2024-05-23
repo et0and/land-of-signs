@@ -1,9 +1,9 @@
-name: Fetch headlines
+name: Fetch RNZ
 
 on:
   push:
   schedule:
-    - cron: "2 * * * *" # Runs every hour at minute 0
+    - cron: "0 * * * *" # Runs every hour at minute 0
 
 jobs:
   run-tests:
@@ -35,21 +35,13 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/1news.spec.ts --project firefox
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: data
-          path: |
-            data/
+        run: npx playwright test e2e/rnz.spec.ts e2e/post.spec.ts --project firefox
 
       - name: Commit and push if it changed
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git pull
-          git add data/1news.txt
+          git add data/rnz.txt data/thepost.txt
           git commit -am "Update headlines" -a || echo "No changes to commit"
           git push
