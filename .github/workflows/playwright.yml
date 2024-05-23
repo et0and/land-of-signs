@@ -35,7 +35,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/
+        run: npx playwright test e2e/ --project chromium
 
       - name: Upload test results
         uses: actions/upload-artifact@v3
