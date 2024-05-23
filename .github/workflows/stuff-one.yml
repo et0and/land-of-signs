@@ -35,7 +35,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/stuff.spec.ts e2e/news.spec.ts --project firefox
+        run: npx playwright test e2e/news.spec.ts --project firefox
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -50,6 +50,6 @@ jobs:
           git diff
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add data/stuff.txt data/1news.txt
+          git add data/1news.txt
           git commit -am "Update headlines" -a || echo "No changes to commit"
           git push
