@@ -65,18 +65,18 @@ const Home = ({
         <link rel="manifest" href="/headline/site.webmanifest" />
       </Head>
       <main
-        className={`flex min-h-screen flex-col items-center dark:bg-black dark:text-white bg-white text-black justify-between p-24 ${inter.className}`}
+        className={`flex md:min-h-screen flex-col items-center dark:bg-black dark:text-white bg-white text-black justify-between p-4 md:p-24 ${inter.className}`}
       >
-        <h1 className="text-3xl md:text-8xl font-extrabold">
+        <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{nzhHeadline}&quot;
         </h1>
-        <h1 className="text-3xl md:text-8xl font-extrabold">
+        <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{rnzHeadline}&quot;
         </h1>
-        <h1 className="text-3xl md:text-8xl font-extrabold">
+        <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{stuffHeadline}&quot;
         </h1>
-        <h1 className="text-3xl md:text-8xl font-extrabold">
+        <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{thepostHeadline}&quot;
         </h1>
       </main>
