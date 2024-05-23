@@ -3,7 +3,9 @@ import fs from "fs";
 import path from "path";
 
 test("Stuff", async ({ page }) => {
+  test.slow();
   await page.goto("https://stuff.co.nz/");
+  await page.locator("#close").first().click();
   await page.locator("#stories-for-1-module-350287958").first().click();
   const headline = await page.locator("h1").innerText();
 
