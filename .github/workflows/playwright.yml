@@ -19,7 +19,7 @@ jobs:
           node-version: 18
 
       - run: npm ci
-
+      - run: npm install playwright
       - run: npx playwright install
 
       - name: Run Playwright tests
