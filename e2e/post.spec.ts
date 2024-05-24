@@ -18,4 +18,6 @@ test("The Post", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "thepost.txt");
   fs.writeFileSync(filePath, headline);
+
+  await page.close();
 });

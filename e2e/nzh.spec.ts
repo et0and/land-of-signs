@@ -9,7 +9,7 @@ test("NZ Herald", async ({ page }) => {
   await page.locator("#toaster-close").click();
   await page
     .locator(
-      "#main > section.section-chain.section-chain-with-native.section-chain-with-native--triple-hero-list.section-chain--triple-hero-list > div > div.chain-main > article > div > div > a"
+      "#main > section.section-chain.section-chain-with-native.section-chain-with-native--triple-hero-list.section-chain--triple-hero-list > div > div.chain-main > article > div > div > a > div.story-card__heading-wrapper > h2"
     )
     .first()
     .click();
@@ -18,4 +18,6 @@ test("NZ Herald", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "nzh.txt");
   fs.writeFileSync(filePath, headline);
+
+  await page.close();
 });
