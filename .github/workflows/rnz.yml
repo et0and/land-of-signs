@@ -35,7 +35,7 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run Playwright tests
-        run: npx playwright test e2e/rnz.spec.ts e2e/post.spec.ts --project firefox
+        run: npx playwright test e2e/rnz.spec.ts --project firefox
 
       - name: Commit and push if it changed
         run: |
