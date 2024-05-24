@@ -1,6 +1,7 @@
 name: Fetch 1News
 
 on:
+  push:
   schedule:
     - cron: "6 * * * *" # Runs every hour at minute 0
 
