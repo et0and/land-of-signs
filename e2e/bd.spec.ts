@@ -14,6 +14,4 @@ test("Business Desk", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "bd.txt");
   fs.writeFileSync(filePath, headline);
-
-  page.close;
 });

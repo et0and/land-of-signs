@@ -18,5 +18,4 @@ test("NZ Herald", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "nzh.txt");
   fs.writeFileSync(filePath, headline);
-  page.close;
 });

@@ -12,5 +12,4 @@ test("RNZ", async ({ page }) => {
   // Write the headline to a file
   const filePath = path.join(process.cwd(), "data", "rnz.txt");
   fs.writeFileSync(filePath, headline);
-  page.close();
 });
