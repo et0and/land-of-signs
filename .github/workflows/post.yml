@@ -1,7 +1,6 @@
 name: Fetch Post
 
 on:
-  push:
   schedule:
     - cron: "8 * * * *" # Runs every hour at minute 0
 
