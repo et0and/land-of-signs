@@ -1,7 +1,6 @@
 name: Fetch RNZ
 
 on:
-  push:
   schedule:
     - cron: "10 * * * *" # Runs every hour at minute 0
 
