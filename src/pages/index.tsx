@@ -9,6 +9,8 @@ interface HomeProps {
   bdHeadline: string;
   thepostHeadline: string;
   newsHeadline: string;
+  nrHeadline: string;
+  spinoffHeadline: string;
 }
 
 const Home = ({
@@ -17,6 +19,8 @@ const Home = ({
   bdHeadline,
   thepostHeadline,
   newsHeadline,
+  nrHeadline,
+  spinoffHeadline,
 }: HomeProps) => {
   return (
     <>
@@ -84,6 +88,12 @@ const Home = ({
         <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{thepostHeadline}&quot;
         </h1>
+        <h1 className="text-5xl md:text-8xl font-extrabold">
+          &quot;{nrHeadline}&quot;
+        </h1>
+        <h1 className="text-5xl md:text-8xl font-extrabold">
+          &quot;{spinoffHeadline}&quot;
+        </h1>
       </main>
     </>
   );
@@ -120,6 +130,16 @@ export const getStaticProps = async () => {
     "utf-8"
   );
 
+  const nrHeadline = fs.readFileSync(
+    path.join(process.cwd(), "data", "nr.txt"),
+    "utf-8"
+  );
+
+  const spinoffHeadline = fs.readFileSync(
+    path.join(process.cwd(), "data", "spinoff.txt"),
+    "utf-8"
+  );
+
   return {
     props: {
       nzhHeadline,
@@ -127,6 +147,8 @@ export const getStaticProps = async () => {
       bdHeadline,
       newsHeadline,
       thepostHeadline,
+      nrHeadline,
+      spinoffHeadline,
     },
   };
 };
