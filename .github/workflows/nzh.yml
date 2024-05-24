@@ -3,7 +3,7 @@ name: Fetch NZH
 on:
   push:
   schedule:
-    - cron: "2 * * * *" # Runs every hour at minute 1
+    - cron: "4 * * * *" # Runs every hour at minute 1
 
 jobs:
   run-tests:
@@ -43,4 +43,4 @@ jobs:
           git config --global user.name "GitHub Action"
           git add data/nzh.txt
           git commit -m "Update headlines" -a || echo "No changes to commit"
-          git push
+          git push --force

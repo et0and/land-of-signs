@@ -3,7 +3,7 @@ name: Fetch 1News
 on:
   push:
   schedule:
-    - cron: "4 * * * *" # Runs every hour at minute 0
+    - cron: "6 * * * *" # Runs every hour at minute 0
 
 jobs:
   run-tests:
@@ -43,4 +43,4 @@ jobs:
           git config --global user.name "GitHub Action"
           git add data/1news.txt
           git commit -m "Update headlines" -a || echo "No changes to commit"
-          git push
+          git push --force
