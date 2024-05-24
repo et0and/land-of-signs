@@ -1,7 +1,6 @@
 name: Fetch NZH
 
 on:
-  push:
   schedule:
     - cron: "4 * * * *" # Runs every hour at minute 1
 
