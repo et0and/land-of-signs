@@ -1,7 +1,6 @@
 name: Fetch BD
 
 on:
-  push:
   schedule:
     - cron: "2 * * * *" # Runs every hour at minute 1
 
