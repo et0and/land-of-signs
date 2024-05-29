@@ -2,7 +2,7 @@ name: Fetch 1News
 
 on:
   schedule:
-    - cron: "6 * * * *" # Runs every hour at minute 0
+    - cron: "@daily" # Runs every hour at minute 0
 
 jobs:
   run-tests:
