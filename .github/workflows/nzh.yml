@@ -2,7 +2,7 @@ name: Fetch NZH
 
 on:
   schedule:
-    - cron: "@daily" # Runs every hour at minute 1
+    - cron: "0 8 * * *" # Runs every hour at minute 1
 
 jobs:
   run-tests:
