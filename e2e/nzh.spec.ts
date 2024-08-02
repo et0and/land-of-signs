@@ -4,20 +4,29 @@ import path from "path";
 
 test("NZ Herald", async ({ page }) => {
   test.slow();
-  await page.goto("https://www.nzherald.co.nz/");
-  await page.waitForTimeout(3000);
-  await page.locator("#toaster-close").click();
-  await page
-    .locator(
-      "#main > section.section-chain.section-chain-with-native.section-chain-with-native--triple-hero-list.section-chain--triple-hero-list > div > div.chain-main > article > div > div > a > div.story-card__heading-wrapper > h2"
-    )
-    .first()
-    .click();
-  const headline = await page.locator("h1").innerText();
+  test.setTimeout(120000); // Increase timeout to 2 minutes
 
-  // Write the headline to a file
-  const filePath = path.join(process.cwd(), "data", "nzh.txt");
-  fs.writeFileSync(filePath, headline);
+  await test.step("Navigate to NZ Herald", async () => {
+    await page.goto("https://www.nzherald.co.nz/", { waitUntil: 'networkidle' });
+  });
 
-  await page.close();
+  await test.step("Close toaster if present", async () => {
+    try {
+      await page.locator("#toaster-close").click({ timeout: 5000 });
+    } catch (error) {
+      console.log("Toaster not found or couldn't be closed");
+    }
+  });
+
+  await test.step("Click on first article", async () => {
+    await page.locator("article h2").first().click();
+  });
+
+  await test.step("Extract headline", async () => {
+    const headline = await page.locator("h1").innerText({ timeout: 10000 });
+
+    // Write the headline to a file
+    const filePath = path.join(process.cwd(), "data", "nzh.txt");
+    fs.writeFileSync(filePath, headline);
+  });
 });
