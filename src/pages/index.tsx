@@ -88,12 +88,6 @@ const Home = ({
         <h1 className="text-5xl md:text-8xl font-extrabold">
           &quot;{thepostHeadline}&quot;
         </h1>
-        <h1 className="text-5xl md:text-8xl font-extrabold">
-          &quot;{nrHeadline}&quot;
-        </h1>
-        <h1 className="text-5xl md:text-8xl font-extrabold">
-          &quot;{spinoffHeadline}&quot;
-        </h1>
       </main>
     </>
   );
